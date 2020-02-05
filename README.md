@@ -3,6 +3,13 @@ Test task for Unshift - Blog React application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project launch
+
+1. Clone repository
+2. Open terminal in local repository
+3. Run `npm i`
+4. Run `npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:
