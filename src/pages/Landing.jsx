@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import LandingPost from '../components/LandingPost'
-import { deletePost } from '../actions';
 
-function Landing ({ posts, onDelete }) {
+function Landing ({posts}) {
   if(!posts.length) {
     return (
       <div>
@@ -12,31 +12,31 @@ function Landing ({ posts, onDelete }) {
     )
   }
   return (
-    <div>
-    {posts.map(post => {
-      return (
-        <LandingPost post={ post } onDelete={ onDelete } key={ post._id } />
-      );
-    })}
-  </div>
+    <>
+      <h2>Posts</h2>
+
+      <Link to='/create'>
+        <i class="far fa-plus-square"></i>
+      </Link>
+
+      <div>
+        {posts.map(post => {
+          return (
+            <LandingPost post={ post } key={ post.id } />
+          )
+        })}
+      </div>
+    </>
   )
 }
 
 const mapStateToProps = state => {
   return {
     posts: state.posts
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onDelete: id => {
-      dispatch(deletePost(id));
-    }
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Landing);

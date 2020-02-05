@@ -79,7 +79,7 @@ export const changePost = (data) => {
 
 export const fetchPost = id => {
   return (dispatch) => {
-    return axios.get(`${URL}/posts/${id}_embed=comments`)
+    return axios.get(`${URL}/posts/${id}?_embed=comments`)
       .then(res => {
         dispatch(changePost(res.data))
       })

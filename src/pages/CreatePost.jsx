@@ -1,8 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createPost } from '../actions';
+import React from 'react'
+import { connect } from 'react-redux'
+import { createPost } from '../actions'
+import CreateForm from '../components/CreateForm'
 
-class NewPost extends React.Component {
+class CreatePost extends React.Component {
   state = {
     title: '',
     body: ''
@@ -31,45 +32,21 @@ class NewPost extends React.Component {
 
   render() {
     return (
-      <div>
-          <form onSubmit={ this.handleSubmit }>
-          <div className="form-group">
-              <input
-              type="text"
-              placeholder="Title"
-              className="form-control"
-              name="title"
-              onChange={ this.handleInputChange }
-              value={ this.state.title }
-            />
-          </div>
-          <div className="form-group">
-            <textarea
-              cols="19"
-              rows="8"
-              placeholder="Body"
-              className="form-control"
-              name="body"
-              onChange={ this.handleInputChange }
-              value={ this.state.body }>
-            </textarea>
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">Add Post</button>
-            <button type="button" className="btn btn-warning" onClick={ this.handleReset }>
-              Reset
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+      <CreateForm
+        handleSubmit={ this.handleSubmit }
+        handleInputChange={ this.handleInputChange }
+        handleReset={ this.handleReset }
+        title={ this.state.title }
+        body={ this.state.body }
+      />
+    )
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onAddPost: post => {
-      dispatch(createPost(post));
+      dispatch(createPost(post))
     }
   };
 };
@@ -77,4 +54,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps
-)(NewPost);
+)(CreatePost)
